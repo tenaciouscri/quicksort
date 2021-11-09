@@ -1,0 +1,24 @@
+
+BEGIN QuickSort(list, low=0, high=-1)
+  IF high == -1
+    high = LENGTH OF list -1
+  ENDIF
+  IF low < high
+    pi = Partition(list, low, high)
+    QuickSort(list, low, pi - 1)
+    QuickSort(list, pi + 1, high)
+  ENDIF
+END QuickSort
+
+BEGIN Partition(list, low, high)
+  pivot = list[high]  
+  i = low - 1
+  FOR j FROM low TO (high MINUS 1)
+    IF list[j] < pivot
+      i++
+      SWAP list[i] AND list[j]
+    ENDIF
+  ENDFOR
+  SWAP list[i + 1] AND LIST[high]
+  RETURN i + 1
+END Partition
